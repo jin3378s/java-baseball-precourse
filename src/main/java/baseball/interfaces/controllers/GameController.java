@@ -3,7 +3,7 @@ package baseball.interfaces.controllers;
 import baseball.domain.GameService;
 import baseball.interfaces.dto.BallCountDTO;
 import baseball.interfaces.utils.Validation;
-import nextstep.utils.Console;
+import camp.nextstep.edu.missionutils.Console;
 
 import java.security.InvalidParameterException;
 
@@ -22,18 +22,15 @@ public class GameController {
 
         while (!isGameEnded) {
             this.playGame();
-
         }
+        System.out.println("게임 종료");
     }
 
     private void playGame() {
         String input = Console.readLine();
-        try {
-            Validation.validAnswerInput(input);
-        } catch (InvalidParameterException err) {
-            System.out.println(err.getMessage());
-            return;
-        }
+
+        Validation.validAnswerInput(input);
+
         BallCountDTO ballCountDTO = gameService.submit(this.splitThreeDigitsNumber(Integer.parseInt(input)));
 
         checkBallCount(ballCountDTO);
@@ -53,13 +50,8 @@ public class GameController {
 
     private void checkContinueToPlay() {
         String choice = Console.readLine();
-        try {
-            Validation.validEndGameInput(choice);
-        } catch (InvalidParameterException err) {
-            System.out.println(err.getMessage());
-            this.checkContinueToPlay();
-            return;
-        }
+        Validation.validEndGameInput(choice);
+
 
         if (choice.equals("1")) {
             this.gameService.playBall();

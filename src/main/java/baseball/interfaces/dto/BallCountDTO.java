@@ -23,14 +23,13 @@ public class BallCountDTO {
     public String toString() {
         ArrayList<String> result = new ArrayList<>();
 
-        if (this.strikeCount > 0) {
-            result.add(strikeCount + "스트라이크");
-        }
-
         if (this.ballCount > 0) {
             result.add(ballCount + "볼");
         }
 
+        if (this.strikeCount > 0) {
+            result.add(strikeCount + "스트라이크");
+        }
 
         if (this.strikeCount == 0 && this.ballCount == 0) {
             return "낫싱";

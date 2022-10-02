@@ -1,6 +1,6 @@
 package baseball.domain;
 
-import nextstep.utils.Randoms;
+import camp.nextstep.edu.missionutils.Randoms;
 
 public class RandomNumberPickerImpl implements IRandomNumberPicker {
     @Override
